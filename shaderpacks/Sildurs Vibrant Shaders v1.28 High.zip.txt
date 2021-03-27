@@ -1,4 +1,0 @@
-#Wed Mar 24 17:39:02 EDT 2021
-emissive_B=0.4
-emissive_G=0.6
-emissive_R=0.9
