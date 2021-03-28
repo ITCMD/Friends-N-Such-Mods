@@ -1,7 +1,7 @@
 @echo off
 set ver=1.1
 if not "%cd%"=="%temp%" (
-	copy /y "%~0" "%temp%\updator.bat"
+	copy /y "%~0" "%temp%\updator.bat" >nul
 )
 set cdt=%cd%
 C:
@@ -14,12 +14,8 @@ if not %errorlevel%==0 (
 	pause
 	exit
 )
-if exist ver.txt del /f /q "ver.txt"
-curl -LJO https://github.com/ITCMD/Friends-N-Such-Mods/raw/main/ver.txt >nul
-find "[%ver%]" "ver.txt" >nul
-set uptodate=%errorlevel%
 if exist "PingTest" del /f /q "PingTest"
-curl -LJO https://github.com/ITCMD/Friends-N-Such-Mods/raw/main/PingTest >nul
+curl -LJO -s https://github.com/ITCMD/Friends-N-Such-Mods/raw/main/PingTest >nul
 find "[Success]" "PingTest" >nul
 if not %errorlevel%==0 (
 	echo [91mERROR: Download Failed for unknown reason. Contact Lucas.[90m
@@ -27,6 +23,10 @@ if not %errorlevel%==0 (
 	pause
 	exit
 )
+if exist ver.txt del /f /q "ver.txt"
+curl -LJO -s https://github.com/ITCMD/Friends-N-Such-Mods/raw/main/ver.txt >nul
+find "[%ver%]" "ver.txt" >nul
+set uptodate=%errorlevel%
 if "%uptodate%"=="0" (
 	echo Friends-N-Such is up to date.
 	goto :launch
