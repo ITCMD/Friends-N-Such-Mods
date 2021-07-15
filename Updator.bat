@@ -1,5 +1,5 @@
 @echo off
-set ver=1.2
+set ver=1.3
 if not "%cd%"=="%temp%" (
 	copy /y "%~0" "%temp%\updator.bat" >nul
 )
