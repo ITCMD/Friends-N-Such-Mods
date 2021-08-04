@@ -1,5 +1,5 @@
 @echo off
-set ver=1.3
+set ver=1.4
 if not "%cd%"=="%temp%" (
 	copy /y "%~0" "%temp%\updator.bat" >nul
 )
@@ -41,9 +41,11 @@ echo [96mDownloading latest modpack . . .
 curl -LJO https://github.com/ITCMD/Friends-N-Such-Mods/archive/refs/heads/main.zip >nul
 echo [96mUnzipping . . .[0m
 7za.exe x Friends-N-Such-Mods-main.zip >nul
+if exist "Friends-N-Such-Mods-main\Prepare.bat" call "Friends-N-Such-Mods-main\Prepare.bat"
 echo [96mCopying Files to %~1 . . .[0m
 XCOPY "Friends-N-Such-Mods-main\*" "%~1" /s /i /y
 echo [96mCleaning up . . .[0m
+if exist "Friends-N-Such-Mods-main\Cleanup.bat" call "Friends-N-Such-Mods-main\Cleanup.bat"
 if exist Friends-N-Such-Mods-main.zip del /f /q Friends-N-Such-Mods-main.zip
 if exist "Friends-N-Such-Mods-main\" rmdir /s /q "Friends-N-Such-Mods-main"
 echo [92mDone![0m
