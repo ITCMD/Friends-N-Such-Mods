@@ -32,7 +32,7 @@ echo [96mDownloading latest modpack . . .[0m
 curl -LJO https://github.com/ITCMD/Friends-N-Such-Mods/archive/refs/heads/main.zip >nul
 echo [96mUnzipping . . .[0m
 7za.exe x Friends-N-Such-Mods-main.zip >nul
-if exist "Friends-N-Such-Mods-main\Prepare.bat" call "Friends-N-Such-Mods-main\Prepare.bat"
+if exist "Friends-N-Such-Mods-main\Prepare.bat" call "Friends-N-Such-Mods-main\Prepare.bat" "%~1"
 echo [96mCopying Files to %~1 . . .[0m
 XCOPY "Friends-N-Such-Mods-main\*" "%~1" /s /i /y
 echo [96mCleaning up . . .[0m
