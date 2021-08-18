@@ -44,7 +44,7 @@ echo [92mDone![0m
 timeout /t 5 /nobreak
 if exist "%~1\..\..\..\MultiMC.exe" (
 	echo Launching . . .[0m
-	"%~1\..\..\..\MultiMC.exe" -l "Friends N Such"
+	"%~1\..\..\..\MultiMC.exe" -l "Friends N Such MultiMC"
 	exit
 )
 echo You may now close this and launch Friends N Such!
